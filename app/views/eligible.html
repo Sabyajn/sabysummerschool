@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Introduction
+      </h1>
+
+      <form class="form" action="/eligible" method="post">
+
+        <p>
+          <Strong>Organisation name &nbsp : </Strong> &nbsp {{ data['choose-org'] }} <br>
+          <Strong>Uknoo/Uno &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </Strong> &nbsp {{ data['uknoo'] }} <br>
+          <Strong>Full name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </Strong> &nbsp Sara Lance <br>
+          <Strong>Education mail &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </Strong> &nbsp example@education.gov.uk <br>
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p>Use this form to claim funding for your summer school, by confirming that your summer school took place in accordance with the <a href="https://www.gov.uk/government/publications/summer-schools-programme" target="_blank">guidance (opens in new tab)</a> and conditions of funding, and providing information about the pupils who took part, the activities offered and how your summer school was staffed.</p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+        <p>
+          <Strong>You can also claim funding for:</Strong>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>any summer school places you delivered on behalf of other schools that did not run their own summer school</li>
+            <li>any unrecoverable costs you incurred, for example, where a pupil has been invited, but not attended at very short notice.</li>
+          </ul>
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+        <p>Payment will be awarded on the basis of actual costs incurred, up to the value of your maximum allocation <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-summer-schools-programme-funding" target="_blank">your maximum allocation. (opens in new tab)</a></p>
+
+        <p>For more information, or to view your school's maximum funding allocation, you can read the <a href="https://www.gov.uk/government/publications/summer-schools-programme" target="_blank">summer schools guidance. (opens in new tab)</a></p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

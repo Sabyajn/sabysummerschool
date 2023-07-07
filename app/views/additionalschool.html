@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Confirm how many additional schools you delivered a summer school for?
+      </h1>
+
+      <form class="form" action="/additionalschool" method="post">
+
+        <p>
+          {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+          {{ govukSelect({
+            id: "sort",
+            name: "select-no",
+            value: data['select-no'],
+            hint: {
+              text: "Only select the no of additional schools and not any main schools"
+            },
+            items: [
+              {
+                value: "Select",
+                text: "Select",
+                selected: true
+              },
+              {
+                value: "1-5 low level",
+                text: "1-5 low level"
+              },
+              {
+                value: "5-10 low level",
+                text: "5-10 low level"
+              },
+              {
+                value: "1-5 mid level",
+                text: "1-5 mid level"
+              },
+              {
+                value: "5-10 mid level",
+                text: "5-10 mid level"
+              },
+              {
+                value: "1-5 high level",
+                text: "1-5 high level"
+              },
+              {
+                value: "5-10 high level",
+                text: "5-10 high level"
+              },
+              {
+                value: "1-5 HS",
+                text: "1-5 HS"
+              },
+              {
+                value: "5-10 HS",
+                text: "5-10 HS"
+              }
+            ]
+          }) }}
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

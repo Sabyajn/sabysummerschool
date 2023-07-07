@@ -1,0 +1,122 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Confirm your arrangements
+      </h1>
+
+      <form class="form" action="informationcheck" method="post">
+
+        <p>You submitted the following information in your ‘Confirm your arrangements for summer schools’ submission:</p>
+
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Organisation name"
+                },
+                value: {
+                  text: data['choose-org']
+                }
+              },
+              {
+                key: {
+                  text: "Uknoo / Uno"
+                },
+                value: {
+                  text: data['uknoo']
+                }
+              },
+              {
+                key: {
+                  text: "Full name"
+                },
+                value: {
+                  text: "Sara Lance"
+                }
+              },
+              {
+                key: {
+                  text: "Education email"
+                },
+                value: {
+                  text: "example@education.gov.uk"
+                }
+              },
+              {
+                key: {
+                  text: "School participation"
+                },
+                value: {
+                  text: data['summer-school-take-place']
+                }
+              },
+              {
+                key: {
+                  text: "School delivery"
+                },
+                value: {
+                  text: data['deliver-a-summer-school']
+                }
+              }
+            ]
+          }) }}
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+        <p>
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "confirm-your-arrangements",
+            value: data['confirm-your-arrangements'],
+            fieldset: {
+              legend: {
+                text: "Is the above information correct?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,224 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Check your answers before sending your application
+      </h1>
+      
+      
+
+      <form class="form" action="/checkanswers" method="post">
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Provide your UKNOO or UNO number"
+            },
+            value: {
+              text: data['uknoo']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/uknoo",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Select your organization to check if you are eligible for funds"
+            },
+            value: {
+              text: data['choose-org']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/selectorg",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Did your summer school take place?"
+            },
+            value: {
+              text: data['summer-school-take-place']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/ourschools",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Did you deliver a summer school on behalf of another school, in addition to your own?"
+            },
+            value: {
+              text: data['deliver-a-summer-school']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/anotherschool",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Is the above information (arrangements)correct?"
+            },
+            value: {
+              text: data['confirm-your-arrangements']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/informationcheck",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Only select the no of additional schools and not any main schools"
+            },
+            value: {
+              text: data['select-no']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/additionalschool",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Over how many days did your summer school take place?"
+            },
+            value: {
+              text: data['event-days']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/schooldays",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "On which date did your summer school take place?"
+            },
+            value: {
+              text: data['summer-date-day'] + " / " + data['summer-date-month'] + " / " + data['summer-date-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/schooldate",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Table data confirmation"
+            },
+            value: {
+              text: data['table-data']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/datavalidation",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--m">
+
+      <h2 class="govuk-heading-s">
+        Declaration:
+      </h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li><br>
+        </ul>
+      </p>
+      <p>
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {{ govukCheckboxes({
+          items: [
+            {
+              value: "I confirm",
+              text: "By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct."
+            }
+          ]
+        }) }}
+      </p>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Save summary as pdf",
+            href: "#",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

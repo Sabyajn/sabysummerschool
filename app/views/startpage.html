@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+      
+      <p>You can now claim funding for your summer school as part of the 2023 summer school programme.</p>
+      <p class="govuk-heading-s">This form can be submitted by any of the following types of school:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>M academies</li>
+        <li>AP academies</li>
+        <li>R unit</li>
+        <li>S academies</li>
+      </ul>
+
+      <p>The form can only be submitted by eligible schools with a summer schools’ funding allocation. Payment will be awarded on the basis of actual costs incurred, up to the value of <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-summer-schools-programme-funding" target="_blank">your maximum allocation. (opens in new tab)</a></p>
+      <p>You can find the published summer schools guidance on <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-summer-schools-programme-funding/summer-schools-programme-2021-conditions-of-funding-for-schools-and-local-authorities" target="_blank">GOV.UK (opens in new tab)</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break">
+
+
+      {{ govukButton({
+        text: "Start now",
+        href: "/uknoo",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-s">
+        Before you start
+      </h2>
+
+      <p>
+        Please ensure that you:
+        <ul class="govuk-list govuk-list--bullet">
+          <li>read the <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-summer-schools-programme-funding" target="_blank">published guidance (opens in new tab)</a></li>
+          <li>are an <a href="https://www.gov.uk/government/publications/coronavirus-covid-19-summer-schools-programme-funding" target="_blank">eligible institution (opens in new tab)</a></li>
+          <li>have the details and the 6-digit Unique Number (UNO) of any other schools you delivered a summer school for (you can find UNOs on <a href="https://get-information-schools.service.gov.uk" target="_blank">get information about schools (opens in new tab))</a></li>
+          <li>have the number of places you delivered – this will include the different number of pupils invited on each day of your summer school</li>
+          <li>information regarding pupils who were invited and attended</li>
+          <li>the activities offered</li>
+          <li>how your summer school was staffed and when it took place</li>
+          <li>any additional costs incurred as a result of running the summer school and any costs you received from parents or carers.</li>
+        </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

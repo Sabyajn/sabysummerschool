@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Select your organisation
+      </h1>
+
+      <form class="form" action="/selectorg" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "choose-org",
+        value: data['choose-org'],
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "M academics",
+            text: "M academics"
+          },
+          {
+            value: "AP academics",
+            text: "AP academics"
+          },
+          {
+            value: "R unit",
+            text: "R unit"
+          },
+          {
+            value: "S academics",
+            text: "S academics"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

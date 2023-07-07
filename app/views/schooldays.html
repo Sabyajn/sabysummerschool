@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Over how many days did your summer school take place?
+      </h1>
+
+      <form class="form" action="/schooldays" method="post">
+
+        <p>
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            hint: {
+              text: "Enter number of days between 1 and 30"
+            },
+            classes: "govuk-!-width-one-quarter",
+            id: "event-days",
+            name: "event-days",
+            value: data['event-days']
+          }) }}
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
