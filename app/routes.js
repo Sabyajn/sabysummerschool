@@ -17,15 +17,18 @@ router.post('/uknoo', function (req, res) {
 })
 
 
-// Branching on selectorg page
+//Branching on selectorg page
 router.post('/selectorg', function (req, res) {
-  var corg = req.session.data['choose-org']
-  if (corg == "M academics"){
-    res.redirect('/eligible')
-  } else {
-    res.redirect('/ineligible')
+
+  let corg = req.session.data['choose-org']
+  let eligible = ['M academics','AP academics'];
+
+  if(eligible.includes(corg)){
+    res.redirect("/eligible")
+  } else{
+    res.redirect("/ineligible");
   }
-})
+});
 
 
 // Navigation from eligible page
