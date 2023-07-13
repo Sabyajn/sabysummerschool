@@ -41,7 +41,7 @@ router.post('/eligible', function (req, res) {
 
 // Branching on ourschool page
 router.post('/ourschool', function (req, res) {
-  var oschool = req.session.data['summer-school-take-place']
+  let oschool = req.session.data['summer-school-take-place']
   if (oschool == "yes"){
     res.redirect('/anotherschool')
   } else {
@@ -52,7 +52,7 @@ router.post('/ourschool', function (req, res) {
 
 // Branching on anotherschool page
 router.post('/anotherschool', function (req, res) {
-  var aschool = req.session.data['deliver-a-summer-school']
+  let aschool = req.session.data['deliver-a-summer-school']
   if (aschool == "yes"){
     res.redirect('/informationcheck')
   } else {
@@ -63,7 +63,7 @@ router.post('/anotherschool', function (req, res) {
 
 // Branching on informationcheck page
 router.post('/informationcheck', function (req, res) {
-  var carrange = req.session.data['confirm-your-arrangements']
+  let carrange = req.session.data['confirm-your-arrangements']
   if (carrange == "yes"){
     res.redirect('/additionalschool')
   } else {
