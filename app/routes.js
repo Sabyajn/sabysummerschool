@@ -20,8 +20,8 @@ router.post('/uknoo', function (req, res) {
 //Branching on selectorg page
 router.post('/selectorg', function (req, res) {
 
-  let corg = req.session.data['choose-org']
-  let eligible = ['M academics','AP academics'];
+  var corg = req.session.data['choose-org']
+  var eligible = ['M academics','AP academics'];
 
   if(eligible.includes(corg)){
     res.redirect("/eligible")
@@ -41,7 +41,7 @@ router.post('/eligible', function (req, res) {
 
 // Branching on ourschool page
 router.post('/ourschool', function (req, res) {
-  let oschool = req.session.data['summer-school-take-place']
+  var oschool = req.session.data['summer-school-take-place']
   if (oschool == "yes"){
     res.redirect('/anotherschool')
   } else {
@@ -52,7 +52,7 @@ router.post('/ourschool', function (req, res) {
 
 // Branching on anotherschool page
 router.post('/anotherschool', function (req, res) {
-  let aschool = req.session.data['deliver-a-summer-school']
+  var aschool = req.session.data['deliver-a-summer-school']
   if (aschool == "yes"){
     res.redirect('/informationcheck')
   } else {
@@ -63,7 +63,7 @@ router.post('/anotherschool', function (req, res) {
 
 // Branching on informationcheck page
 router.post('/informationcheck', function (req, res) {
-  let carrange = req.session.data['confirm-your-arrangements']
+  var carrange = req.session.data['confirm-your-arrangements']
   if (carrange == "yes"){
     res.redirect('/additionalschool')
   } else {
