@@ -9,7 +9,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 // Add your routes here
 
 
-// Branching on uknoo page
+// Navigation from uknoo page
 router.post('/uknoo', function (req, res) {
   {
     res.redirect('/selectorg')
