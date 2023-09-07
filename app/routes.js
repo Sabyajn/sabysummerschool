@@ -56,9 +56,21 @@ router.post('/anotherschool', function (req, res) {
   if (aschool == "yes"){
     res.redirect('/informationcheck')
   } else {
-    res.redirect('/ineligible')
+    res.redirect('/anotherschool-error')
   }
 })
+
+
+// Branching on anotherschool-error page
+router.post('/anotherschool-error', function (req, res) {
+  var aschool = req.session.data['deliver-a-summer-school-error']
+  if (aschool == "yes"){
+    res.redirect('/informationcheck')
+  } else {
+    res.redirect('/anotherschool-error')
+  }
+})
+
 
 
 // Branching on informationcheck page

@@ -26,18 +26,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "lorem ipsum error message",
+            href: "#"
+          }
+        ]
+      }) }}
+
       <h1 class="govuk-heading-l">
         Did you deliver a summer school on behalf of another school, in addition to your own?
       </h1>
 
-      <form class="form" action="/anotherschool" method="post">
-
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <form class="form" action="/anotherschool-error" method="post">
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          name: "deliver-a-summer-school",
-          value: data['deliver-a-summer-school'],
+          name: "deliver-a-summer-school-error",
+          value: data['deliver-a-summer-school-error'],
           hint: {
             text: "Only select ‘yes’ if you delivered a summer school on behalf of another eligible school; this question is not asking about feeder primaries."
           },
@@ -50,7 +58,10 @@
               value: "no",
               text: "No"
             }
-          ]
+          ],
+          errorMessage: {
+            text: "lorem ipsum error message"
+          }
         }) }}
 
         {{ govukButton({
